@@ -1,0 +1,22 @@
+name: job-artifact
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment environment"
+        required: false
+        default: dev
+      version:
+        description: "App version"
+        required: true
+
+jobs:
+  create_artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Version: ${{ inputs.version }}"
+
